@@ -1,0 +1,29 @@
+<div class="container-fluid text-center bg-dark text-white">
+    <h1>Covid-19 Tracker</h1>
+</div>
+<div class="container-fluid">
+    <div class="row mt-9">
+        <div class="col-lg-3 "></div>
+        <div class="col-lg-6 text-center" style="margin-top: 10vh;">
+            <img src="/assets/images/logo.png" alt="" width="150" height="150">
+            <h1>Login</h1>
+            <br>
+            <form (ngSubmit)="login()" [formGroup]="loginDetails">
+                <!-- <label for="">E-mail</label> -->
+                <input type=" text " class="form-control" formControlName="email" placeholder="Enter E-mail Id" [ngClass]="{'error':!loginDetails.get('email').valid && valid,'valid':loginDetails.get('email').valid}">
+                <span *ngIf="!loginDetails.get('email').valid && valid" style="color: red;">Please enter a valid E-mail id</span>
+                <br><br>
+                <!-- <label for="">Password</label> -->
+                <input type="password" class="form-control" id="domainName" formControlName="password" placeholder="Enter password" [ngClass]="{'error':!loginDetails.get('password').valid && valid ,'valid':loginDetails.get('password').valid}">
+                <span *ngIf="!loginDetails.get('password').valid && valid" style="color: red;">Please enter a password</span>
+                <br><br>
+                <input type="submit" class="btn btn-dark " value="Log In">
+            </form>
+            <br>
+            <a routerLink="/register">
+                <h3>Register new account</h3>
+            </a>
+        </div>
+        <div class="col-lg-3 "></div>
+    </div>
+</div>

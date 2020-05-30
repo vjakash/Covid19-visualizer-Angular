@@ -1,0 +1,53 @@
+<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+    <a class="navbar-brand col-8 col-md-2 col-lg-1 mr-0 px-3 text-right" href="#">Fresh Desk </a>
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+            <a class="nav-link" href="#" (click)="signout()">
+                <fa-icon [icon]="faPowerOff"></fa-icon>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-1 d-md-block bg-dark text-white sidebar collapse" style="height: 200vh;">
+            <div class="sidebar-sticky pt-3">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active astyle" href="#" onclick="dashBoard(0)">
+                            <span> Dashboard </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link astyle" href="#" onclick="listTicket()">
+                            <span class="material-icons" data-toggle="tooltip" data-placement="right" title="Tickets">confirmation_number</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link astyle" href="#" onclick="listContact()">
+                            <span class="material-icons" data-toggle="tooltip" data-placement="right" title="Contacts">perm_contact_calendar</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-11 px-md-4" id="main1">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2" id="titleOfMain">Dashboard</h1>
+                <div class="btn-toolbar mb-2 mb-md-0">
+                    <div class="btn-group mr-2">
+                        <button type="button" class="btn btn-sm btn-dark" id="btn1">-</button>
+                        <button type="button" class="btn btn-sm btn-dark" id="btn2">-</button>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid" id="content">
+            </div>
+        </main>
+    </div>
+</div>

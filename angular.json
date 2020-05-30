@@ -24,6 +24,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -119,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Covid19-Tracker"
+    }
+  },
+  "defaultProject": "Covid19-Tracker",
+  "cli": {
+    "analytics": "42c85fa3-4556-4a7b-b8b0-b4112cb7273e"
+  }
 }

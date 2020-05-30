@@ -1,0 +1,11 @@
+body {
+    background-color: #EFF0F1;
+}
+
+.error {
+    border: 2px solid red;
+}
+
+.valid {
+    border: 2px solid green;
+}

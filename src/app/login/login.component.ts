@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
       // console.log(this.loginDetails.value);
       this.auth.login(this.loginDetails.value).subscribe(
         data=>{
-        alert("login successfull");
+        // alert("login successfull");
         this.auth.storeToken(data.token);
         // console.log(data);
         this.router.navigate(["/dashboard"]);

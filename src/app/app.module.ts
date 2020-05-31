@@ -11,13 +11,26 @@ import {HttpClientModule} from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component'
 import { AuthGuard } from './guard/auth.guard';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
+import { CountsComponent } from './counts/counts.component';
+import { NgChartjsModule } from 'ng-chartjs';
+import { LineChartComponent } from './line-chart/line-chart.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TableComponent } from './table/table.component';
+import { MainDashComponent } from './main-dash/main-dash.component';
+import { EachStateComponent } from './each-state/each-state.component';
+import { StateGraphComponent } from './state-graph/state-graph.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    DashboardComponent
+    DashboardComponent,
+    CountsComponent,
+    LineChartComponent,
+    TableComponent,
+    MainDashComponent,
+    EachStateComponent,
+    StateGraphComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +38,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AppRoutingModule,
     ReactiveFormsModule,FormsModule,
     HttpClientModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    NgChartjsModule,
+    NgbModule
   ],
   providers: [AuthGuard,{provide: LocationStrategy,useClass:HashLocationStrategy}],
   bootstrap: [AppComponent]

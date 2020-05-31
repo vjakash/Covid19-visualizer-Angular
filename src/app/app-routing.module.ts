@@ -4,6 +4,9 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from './guard/auth.guard';
+import { LineChartComponent } from './line-chart/line-chart.component';
+import { MainDashComponent } from './main-dash/main-dash.component';
+import { EachStateComponent } from './each-state/each-state.component';
 
 
 const routes: Routes = [{
@@ -15,8 +18,20 @@ const routes: Routes = [{
 },{
   path:"dashboard",
   component:DashboardComponent,
+  children:[{
+    path:"",
+    component:MainDashComponent
+  },{
+    path:"state/:id",
+    component:EachStateComponent
+  }],
   canActivate:[AuthGuard]
-}
+ }
+//  ,
+// {
+//   path:"chart",
+//   component:LineChartComponent
+// }
 ];
 
 @NgModule({

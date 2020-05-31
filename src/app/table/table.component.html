@@ -1,0 +1,28 @@
+<table class="table" style="overflow: scroll;">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">State</th>
+            <th scope="col">Confirmed</th>
+            <th scope="col">Active</th>
+            <th scope="col">Recovered</th>
+            <th scope="col">Deseased</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of StateData;index as i">
+            <th style="width: 25%;"><a [routerLink]='["/dashboard/state/",i]' (mouseover)="changeGraph(item.statecode)">{{item.state}}</a></th>
+            <td class="text-center">
+                <span style="color: red;font-size: 0.7rem;" *ngIf="item.todayConfirmed!=0"> <fa-icon [icon]="faArrowUp"></fa-icon>{{item.deltaconfirmed}}</span>&nbsp;&nbsp;&nbsp;{{item.confirmed}}
+            </td>
+            <td class="text-center">
+                {{item.active}}
+            </td>
+            <td class="text-center">
+                <span style="color: green;font-size: 0.7rem;" *ngIf="item.todayRecovered!=0"> <fa-icon [icon]="faArrowUp"></fa-icon>{{item.deltarecovered}}</span>&nbsp;&nbsp;&nbsp; {{item.recovered}}
+            </td>
+            <td class="text-center">
+                <span style="color: red;font-size: 0.7rem;" *ngIf="item.todayDeceased!=0"> <fa-icon [icon]="faArrowUp"></fa-icon>{{item.deltadeaths}}</span>&nbsp;&nbsp;&nbsp;{{item.deaths}}
+            </td>
+        </tr>
+    </tbody>
+</table>

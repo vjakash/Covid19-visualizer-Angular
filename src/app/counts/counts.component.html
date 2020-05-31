@@ -1,0 +1,97 @@
+<div class="row text-center" *ngIf="display">
+    <div class="confirmed design mr-2 text-left">
+        <h6 class="ml-1 mt-1 confirmedText">Confirmed</h6>
+        <h4 class="ml-1 confirmedTextNum">{{totalData.confirmed}}</h4>
+        <h6 class="ml-1 confirmedText"></h6>
+    </div>
+    <div class="active design mr-2 text-left">
+        <h6 class="ml-1 mt-1 activeText">Active</h6>
+        <h4 class="ml-1 activeTextNum">{{totalData.active}}</h4>
+        <h6 class="ml-1 activeText"></h6>
+    </div>
+    <div class="recovered design mr-2 text-left">
+        <h6 class="ml-1 mt-1 recoveredText">Recovered</h6>
+        <h4 class="ml-1 recoveredTextNum">{{totalData.recovered}}</h4>
+        <h6 class="ml-1 recoveredText"></h6>
+    </div>
+    <div class="deceased design text-left">
+        <h6 class="ml-1 mt-1 deceasedText">Deceased</h6>
+        <h4 class="ml-1 deceasedTextNum">{{totalData.deaths}}</h4>
+        <h6 class="ml-1 deceasedText"></h6>
+    </div>
+
+</div>
+<br>
+<div class="row">
+    <div class="col-lg-12 text-right">
+        <h6 class="recoveredText">Last updated</h6>
+        <h6 class="recoveredTextNum" *ngIf="lastUpdatedHours!=0">about {{lastUpdatedHours}} hours ago</h6>
+        <h6 class="recoveredTextNum" *ngIf="lastUpdatedHours==0">about {{lastUpdatedMins}} Minutes ago</h6>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-lg-12">
+        <h1>Spread Trends</h1>
+        <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="model">
+            <label ngbButtonLabel class="btn-secondary">
+              <input ngbButton type="radio" [value]="'cumulative'"> Cumulative
+            </label>
+            <label ngbButtonLabel class="btn-secondary">
+              <input ngbButton type="radio" value="daily"> Daily
+            </label>
+        </div>
+    </div>
+</div>
+<div class="row" *ngIf="model=='cumulative'">
+    <div class="col-lg-12" *ngIf="displayCumChart">
+        <!-- {{displayCumChart}}{{cumulative|json}} -->
+        <app-line-chart [type]="typeCum.type" [section]="typeCum.section[0]" [cato]="typeCum.cato[0]"></app-line-chart>
+    </div>
+    <div class="col-lg-12" *ngIf="displayCumChart">
+        <app-line-chart [type]="typeCum.type" [section]="typeCum.section[1]" [cato]="typeCum.cato[1]"></app-line-chart>
+    </div>
+    <div class="col-lg-12" *ngIf="displayCumChart">
+        <app-line-chart [type]="typeCum.type" [section]="typeCum.section[2]" [cato]="typeCum.cato[2]"></app-line-chart>
+    </div>
+    <div class="col-lg-12"></div>
+</div>
+<div class="row" *ngIf="model!='cumulative'">
+    <div class="col-lg-12" *ngIf="displayCumChart">
+        <!-- {{displayCumChart}}{{cumulative|json}} -->
+        <app-line-chart [type]="typeDaily.type" [section]="typeDaily.section[0]" [cato]="typeDaily.cato[0]"></app-line-chart>
+    </div>
+    <div class="col-lg-12" *ngIf="displayCumChart">
+        <app-line-chart [type]="typeDaily.type" [section]="typeDaily.section[1]" [cato]="typeDaily.cato[1]"></app-line-chart>
+    </div>
+    <div class="col-lg-12" *ngIf="displayCumChart">
+        <app-line-chart [type]="typeDaily.type" [section]="typeDaily.section[2]" [cato]="typeDaily.cato[2]"></app-line-chart>
+    </div>
+    <div class="col-lg-12"></div>
+</div>
+
+
+<div class="row" *ngIf="model=='cumulative' && stateGraphView">
+    <div class="col-lg-12">
+        <app-state-graph [code]="stateCode" [cato]="'Confirmed'" [model]="model"></app-state-graph>
+    </div>
+    <div class="col-lg-12">
+        <app-state-graph [code]="stateCode" [cato]="'Recovered'" [model]="model"></app-state-graph>
+    </div>
+    <div class="col-lg-12">
+        <app-state-graph [code]="stateCode" [cato]="'Deseased'" [model]="model"></app-state-graph>
+    </div>
+    <div class="col-lg-12"></div>
+</div>
+<div class="row" *ngIf="model!='cumulative' && stateGraphView">
+    <div class="col-lg-12">
+        <app-state-graph [code]="stateCode" [cato]="'Confirmed'" [model]="model"></app-state-graph>
+    </div>
+    <div class="col-lg-12">
+        <app-state-graph [code]="stateCode" [cato]="'Recovered'" [model]="model"></app-state-graph>
+    </div>
+    <div class="col-lg-12">
+        <app-state-graph [code]="stateCode" [cato]="'Deseased'" [model]="model"></app-state-graph>
+    </div>
+    <div class="col-lg-12"></div>
+</div>

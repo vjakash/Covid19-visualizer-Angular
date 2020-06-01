@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
-import { Observable } from 'rxjs';
+import { Observable,of } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 cumData;
 dailyData;
-stateCode="";
-stateGraphView=false;
+stateCode:Observable<any>=of("");
+stateGraphView:Observable<any>=of(false);
+changeState:Observable<any>=of(true);
   constructor(private http:HttpClient) { }
 
   getIndiaData():Observable<any>{
@@ -42,11 +43,21 @@ stateGraphView=false;
   getStateGraphView(){
     return this.stateGraphView;
   }
+  getChangeState(){
+    return this.changeState;
+  }
   setStateCode(stateCode){
     this.stateCode=stateCode;
+    // console.log(this.stateCode);
   }
   setStateGraphView(stateGraphView){
     this.stateGraphView=stateGraphView;
+    // console.log(this.stateGraphView);
   }
+  setChangeState(data){
+    console.log(false);
+    this.changeState=data;
+  }
+  
 }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { Router } from '@angular/router';
 
@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   templateUrl: './counts.component.html',
   styleUrls: ['./counts.component.css'],
 })
-export class CountsComponent implements OnInit {
+export class CountsComponent implements OnInit,DoCheck {
   model = 'cumulative';
   totalData;
   lastUpdatedHours;
@@ -18,6 +18,8 @@ export class CountsComponent implements OnInit {
   dailyData;
   stateCode="";
   stateGraphView=false;
+  changeState=false;
+  prev;
   typeCum = {
     type: 'cumulative',
     section: ['totalconfirmed', 'totalrecovered', 'totaldeceased'],
@@ -28,10 +30,8 @@ export class CountsComponent implements OnInit {
     section: ['dailyconfirmed', 'dailyrecovered', 'dailydeceased'],
     cato: ['Confirmed', 'Recovered', 'Deceased'],
   };
-
+ 
   constructor(private data: DataService, private router: Router) {
-    this.stateCode=this.data.getStateCode();
-    this.stateGraphView=this.data.getStateGraphView();
     this.data.getDetailedData().subscribe(
       (data) => {
         this.totalData = data["statewise"][0];
@@ -87,4 +87,17 @@ export class CountsComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+  ngDoCheck(): void {
+    //Called every time that the input properties of a component or a directive are checked. Use it to extend change detection by performing a custom check.
+    //Add 'implements DoCheck' to the class.
+    // console.log("From counts",this.data.getStateCode(),this.data.getStateGraphView())
+    if(typeof(this.data.getStateCode())!="object" && typeof(this.data.getStateGraphView())!='object' && String(this.data.getStateCode())!=this.prev){
+      // console.log(this.data.getStateCode(),this.data.getStateGraphView());
+      this.prev=String(this.data.getStateCode());
+      this.stateCode=String(this.data.getStateCode());
+      this.stateGraphView=Boolean(this.data.getStateGraphView());
+      this.changeState=Boolean(this.data.getChangeState());
+      console.log(this.stateCode,this.stateGraphView,this.changeState);
+    }
+  }
 }

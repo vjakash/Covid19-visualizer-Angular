@@ -29,8 +29,9 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {}
   register() {
-    this.loader=true;
+    
     if (this.registerDetails.valid) {
+      this.loader=true;
       // console.log(this.registerDetails.value);
       this.auth.register(this.registerDetails.value).subscribe(
         (data) => {

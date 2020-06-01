@@ -24,9 +24,10 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    this.loader=true;
+    
     let count=1;
     if(this.loginDetails.valid){
+      this.loader=true;
       // console.log(this.loginDetails.value);
       this.auth.login(this.loginDetails.value).subscribe(
         data=>{

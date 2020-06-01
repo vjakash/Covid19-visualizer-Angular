@@ -132,7 +132,7 @@ export class LineChartComponent implements OnInit {
       },
       data: {
         labels: chartData.map((item) => {
-          return item['date'];
+          return item['date'].substring(0,6);
         }),
         datasets: [
           {

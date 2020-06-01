@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { CurrencyPipe } from '@angular/common';
 import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
@@ -9,8 +10,10 @@ import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 })
 export class TableComponent implements OnInit {
   faArrowUp = faArrowUp;
+  faSearch=faSearch;
   StateData;
   count=1;
+  searchTerm;
   constructor(private data: DataService) {
     this.data.getDetailedData().subscribe((data) => {
       this.StateData = data['statewise'].filter((item, index) => {
@@ -18,6 +21,7 @@ export class TableComponent implements OnInit {
           return item;
         }
       });
+      // console.log(this.StateData);
     });
   }
 
@@ -37,4 +41,5 @@ export class TableComponent implements OnInit {
     this.data.setStateCode(code);
     this.data.setStateGraphView('true');
   }
+
 }

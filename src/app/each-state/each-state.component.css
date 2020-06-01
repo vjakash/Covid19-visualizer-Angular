@@ -59,3 +59,26 @@
     color: #6C757D;
     font-weight: bold;
 }
+
+.search {
+    background-color: #343A40;
+    color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.search::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: white;
+    opacity: 1;
+    /* Firefox */
+}
+
+.search :-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: white;
+}
+
+.search ::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: white;
+}

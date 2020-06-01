@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder,FormControl, Validators} from '@angular/forms';
 import {AuthService} from '../services/auth.service';
 import { Router } from '@angular/router';
+import { ToastService } from '../services/toast.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   loginDetails;
   valid=false;
-  constructor(private fb:FormBuilder,private auth:AuthService,private router:Router) { 
+  constructor(private fb:FormBuilder,private auth:AuthService,private router:Router,private toastService:ToastService) { 
     this.loginDetails=this.fb.group({
       email:this.fb.control("",[Validators.required,Validators.email]),
       password:this.fb.control("",[Validators.required])
@@ -22,6 +23,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
+    let count=1;
     if(this.loginDetails.valid){
       // console.log(this.loginDetails.value);
       this.auth.login(this.loginDetails.value).subscribe(
@@ -29,15 +31,33 @@ export class LoginComponent implements OnInit {
         // alert("login successfull");
         this.auth.storeToken(data.token);
         // console.log(data);
+          if(count==1){
+            this.showSuccess();
+            count++;
+          }
         this.router.navigate(["/dashboard"]);
       },
         error=>{
-          // console.log(error);
-        alert(error.error.message);
+          if(count==1){
+            this.showDanger(error.error.message);
+            count++;
+          }
+        // alert(error.error.message);
       }
       );
     }else{
       this.valid=true;
     }
+  }
+  showStandard() {
+    this.toastService.show('I am a standard toast');
+  }
+
+  showSuccess() {
+    this.toastService.show('Login Successful', { classname: 'bg-success text-light', delay: 2000 });
+  }
+
+  showDanger(dangerTpl) {
+    this.toastService.show(dangerTpl, { classname: 'bg-danger text-light', delay: 4000 });
   }
 }

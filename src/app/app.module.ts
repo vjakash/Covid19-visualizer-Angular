@@ -19,6 +19,10 @@ import { TableComponent } from './table/table.component';
 import { MainDashComponent } from './main-dash/main-dash.component';
 import { EachStateComponent } from './each-state/each-state.component';
 import { StateGraphComponent } from './state-graph/state-graph.component';
+import {SearchStatePipe} from './pipe/search.pipe';
+import { ToastComponent } from './toast/toast.component';
+import { ToastContainerComponent } from './toast-container/toast-container.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +34,10 @@ import { StateGraphComponent } from './state-graph/state-graph.component';
     TableComponent,
     MainDashComponent,
     EachStateComponent,
-    StateGraphComponent
+    StateGraphComponent,
+    SearchStatePipe,
+    ToastComponent,
+    ToastContainerComponent
   ],
   imports: [
     CommonModule,

@@ -1,85 +1,101 @@
-<div class="container mt-5">
+<div class="container  mt-5">
     <div class="row">
         <div class="col-lg-6">
-            <h1>{{StateData[ind].state}}</h1>
-            <p>Last updated on {{StateData[ind].lastupdatedtime}}</p>
-            <div class="row text-center">
-                <div class="confirmed design mr-2 text-left">
-                    <h6 class="ml-1 mt-1 confirmedText">Confirmed</h6>
-                    <h4 class="ml-1 confirmedTextNum">{{StateData[ind].confirmed}}</h4>
-                    <h6 class="ml-1 confirmedText"></h6>
-                </div>
-                <div class="active design mr-2 text-left">
-                    <h6 class="ml-1 mt-1 activeText">Active</h6>
-                    <h4 class="ml-1 activeTextNum">{{StateData[ind].active}}</h4>
-                    <h6 class="ml-1 activeText"></h6>
-                </div>
-                <div class="recovered design mr-2 text-left">
-                    <h6 class="ml-1 mt-1 recoveredText">Recovered</h6>
-                    <h4 class="ml-1 recoveredTextNum">{{StateData[ind].recovered}}</h4>
-                    <h6 class="ml-1 recoveredText"></h6>
-                </div>
-                <div class="deceased design text-left">
-                    <h6 class="ml-1 mt-1 deceasedText">Deceased</h6>
-                    <h4 class="ml-1 deceasedTextNum">{{StateData[ind].deaths}}</h4>
-                    <h6 class="ml-1 deceasedText"></h6>
-                </div>
-
-            </div>
-
-        </div>
-        <div class="col-lg-6">
-        </div>
-    </div>
-    <br><br>
-    <div class="row">
-        <div class="col-lg-6">
-            <table class="table" style="overflow: scroll;">
-                <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">District</th>
-                        <th scope="col">Confirmed</th>
-                        <th scope="col">Active</th>
-                        <th scope="col">Recovered</th>
-                        <th scope="col">Deseased</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let item of districtData;index as i">
-                        <th style="width: 25%;"><a [routerLink]='["/dashboard/state/",i]'>{{item[0]}}</a></th>
-                        <td class="text-center">
-                            <span style="color: red;font-size: 0.7rem;" *ngIf="item[1]['delta'].confirmed!=0"> <fa-icon [icon]="faArrowUp"></fa-icon>{{item[1]["delta"].confirmed}}</span>&nbsp;&nbsp;&nbsp;{{item[1].confirmed}}
-                            <!-- {{item[1].confirmed}} -->
-                        </td>
-                        <td class="text-center">
-                            {{item[1].active}}
-                        </td>
-                        <td class="text-center">
-                            <span style="color: green;font-size: 0.7rem;" *ngIf="item[1]['delta'].recovered!=0"> <fa-icon [icon]="faArrowUp"></fa-icon>{{item[1]["delta"].recovered}}</span>&nbsp;&nbsp;&nbsp;{{item[1].recovered}}
-                            <!-- {{item[1].recovered}} -->
-                        </td>
-                        <td class="text-center">
-                            <span style="color: red;font-size: 0.7rem;" *ngIf="item[1]['delta'].deceased!=0"> <fa-icon [icon]="faArrowUp"></fa-icon>{{item[1]["delta"].deceased}}</span>&nbsp;&nbsp;&nbsp;{{item[1].deceased}}
-                            <!-- {{item[1].deceased}} -->
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="col-lg-6 ">
             <div class="row">
+                <div class="col-lg-12">
+                    <h1>{{StateData[ind].state}}</h1>
+                    <p>Last updated on {{StateData[ind].lastupdatedtime}}</p>
+                    <div class="row text-center">
+                        <div class="confirmed design mr-2 text-left">
+                            <h6 class="ml-1 mt-1 confirmedText">Confirmed</h6>
+                            <h4 class="ml-1 confirmedTextNum">{{StateData[ind].confirmed}}</h4>
+                            <h6 class="ml-1 confirmedText"></h6>
+                        </div>
+                        <div class="active design mr-2 text-left">
+                            <h6 class="ml-1 mt-1 activeText">Active</h6>
+                            <h4 class="ml-1 activeTextNum">{{StateData[ind].active}}</h4>
+                            <h6 class="ml-1 activeText"></h6>
+                        </div>
+                        <div class="recovered design mr-2 text-left">
+                            <h6 class="ml-1 mt-1 recoveredText">Recovered</h6>
+                            <h4 class="ml-1 recoveredTextNum">{{StateData[ind].recovered}}</h4>
+                            <h6 class="ml-1 recoveredText"></h6>
+                        </div>
+                        <div class="deceased design text-left">
+                            <h6 class="ml-1 mt-1 deceasedText">Deceased</h6>
+                            <h4 class="ml-1 deceasedTextNum">{{StateData[ind].deaths}}</h4>
+                            <h6 class="ml-1 deceasedText"></h6>
+                        </div>
 
+                    </div>
+
+                </div>
             </div>
-            <div class="row text-center">
+            <div class="row mt-5">
+                <div class="col-lg-12">
+                    <div class="input-group flex-nowrap">
+                        <div class="input-group-prepend ">
+                            <span class="input-group-text bg-dark text-white" id="addon-wrapping"><fa-icon [icon]="faSearch"></fa-icon></span>
+                        </div>
+                        <input type="text" class="form-control search" placeholder="Search District" aria-label="Username" aria-describedby="addon-wrapping" [(ngModel)]="searchTerm">
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-lg-12">
+                    <table class="table" style="overflow: scroll;">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">District</th>
+                                <th scope="col">Confirmed</th>
+                                <th scope="col">Active</th>
+                                <th scope="col">Recovered</th>
+                                <th scope="col">Deseased</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of districtData|stateFilter:searchTerm:'district';index as i">
+                                <th style="width: 25%;"><a [routerLink]='["/dashboard/state/",i]'>{{item[0]}}</a></th>
+                                <td class="text-center">
+                                    <span style="color: red;font-size: 0.7rem;" *ngIf="item[1]['delta'].confirmed!=0"> <fa-icon [icon]="faArrowUp"></fa-icon>{{item[1]["delta"].confirmed}}</span>&nbsp;&nbsp;&nbsp;{{item[1].confirmed}}
+                                    <!-- {{item[1].confirmed}} -->
+                                </td>
+                                <td class="text-center">
+                                    {{item[1].active}}
+                                </td>
+                                <td class="text-center">
+                                    <span style="color: green;font-size: 0.7rem;" *ngIf="item[1]['delta'].recovered!=0"> <fa-icon [icon]="faArrowUp"></fa-icon>{{item[1]["delta"].recovered}}</span>&nbsp;&nbsp;&nbsp;{{item[1].recovered}}
+                                    <!-- {{item[1].recovered}} -->
+                                </td>
+                                <td class="text-center">
+                                    <span style="color: red;font-size: 0.7rem;" *ngIf="item[1]['delta'].deceased!=0"> <fa-icon [icon]="faArrowUp"></fa-icon>{{item[1]["delta"].deceased}}</span>&nbsp;&nbsp;&nbsp;{{item[1].deceased}}
+                                    <!-- {{item[1].deceased}} -->
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Top Districts</h1>
+                    <div>
+                        <canvas #canvas id="canvas" height="80" width="150"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="row text-center mt-3">
                 <div class="col-lg-12">
                     <h1>Spread Trends</h1>
                     <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="model">
                         <label ngbButtonLabel class="btn-secondary">
-                          <input ngbButton type="radio" [value]="'cumulative'"> Cumulative
-                        </label>
+                      <input ngbButton type="radio" [value]="'cumulative'"> Cumulative
+                    </label>
                         <label ngbButtonLabel class="btn-secondary">
-                          <input ngbButton type="radio" value="daily"> Daily
-                        </label>
+                      <input ngbButton type="radio" value="daily"> Daily
+                    </label>
                     </div>
                 </div>
             </div>

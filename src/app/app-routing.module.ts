@@ -11,7 +11,7 @@ import { EachStateComponent } from './each-state/each-state.component';
 
 const routes: Routes = [{
   path:"",
-  component:LoginComponent
+  component:LoginComponent,
 },{
   path:"register",
   component:RegisterComponent

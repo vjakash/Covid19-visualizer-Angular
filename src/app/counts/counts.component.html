@@ -45,7 +45,7 @@
 </div>
 <div class="row text-center" *ngIf="model=='cumulative' && stateGraphView!=true">
     <div class="col-lg-12">
-        <h1 class="text-center">India</h1>
+        <h1 class="text-center">India-Cumulative Data</h1>
     </div>
     <div class="col-lg-12" *ngIf="displayCumChart ">
         <!-- {{displayCumChart}}{{cumulative|json}} -->
@@ -60,6 +60,9 @@
     <div class="col-lg-12"></div>
 </div>
 <div class="row" *ngIf="model!='cumulative' && stateGraphView!=true">
+    <div class="col-lg-12">
+        <h1 class="text-center">India-Daily Data</h1>
+    </div>
     <div class="col-lg-12" *ngIf="displayCumChart ">
         <!-- {{displayCumChart}}{{cumulative|json}} -->
         <app-line-chart [type]="typeDaily.type" [section]="typeDaily.section[0]" [cato]="typeDaily.cato[0]"></app-line-chart>
@@ -76,7 +79,7 @@
 
 <div class="row text-center" *ngIf="model=='cumulative' && stateGraphView==true && changeState==true">
     <div class="col-lg-12 text-center">
-        <h1>{{state}}</h1>
+        <h1>{{state}}-Cumulative Data</h1>
     </div>
     <div class="col-lg-12" style="margin-top: -15px;">
         <app-state-graph [code]="stateCode" [cato]="'Confirmed'" [model]="model"></app-state-graph>
@@ -90,6 +93,9 @@
     <div class="col-lg-12"></div>
 </div>
 <div class="row" *ngIf="model!='cumulative' && stateGraphView==true  && changeState==true">
+    <div class="col-lg-12 text-center">
+        <h1>{{state}}-Daily Data</h1>
+    </div>
     <div class="col-lg-12 " style="margin-top: -15px;">
         <app-state-graph [code]="stateCode" [cato]="'Confirmed'" [model]="model"></app-state-graph>
     </div>
@@ -103,7 +109,7 @@
 </div>
 <div class="row text-center" *ngIf="model=='cumulative' && stateGraphView==true && changeState==false">
     <div class="col-lg-12 text-center">
-        <h1>{{state}}</h1>
+        <h1>{{state}}-Cumulative Data</h1>
     </div>
     <div class="col-lg-12" style="margin-top: -15px;">
         <app-state-graph [code]="stateCode" [cato]="'Confirmed'" [model]="model"></app-state-graph>
@@ -117,6 +123,9 @@
     <div class="col-lg-12"></div>
 </div>
 <div class="row" *ngIf="model!='cumulative' && stateGraphView==true  && changeState==false">
+    <div class="col-lg-12 text-center">
+        <h1>{{state}}-Daily Data</h1>
+    </div>
     <div class="col-lg-12 " style="margin-top: -15px;">
         <app-state-graph [code]="stateCode" [cato]="'Confirmed'" [model]="model"></app-state-graph>
     </div>

@@ -19,13 +19,14 @@ export class StateGraphComponent implements OnInit {
   @Input('code') code;
   @Input('cato') cato;
   @Input('model') model;
-
+  state;
   chart: any = [];
 
   constructor(private data: DataService, private elementRef: ElementRef) {}
 
   ngOnInit(): void {}
   ngAfterViewInit() {
+    let state;
     let section = 'kg';
     let type = 'hvj';
     let cato: string = this.cato;
@@ -33,13 +34,22 @@ export class StateGraphComponent implements OnInit {
     let chartLabel: any = [];
     let color;
     let fill=false;
+    this.data.getDetailedData().subscribe((data)=>{
+      // console.log(data);
+      for(let item of data["statewise"]){
+        if(item.statecode.toLowerCase()==this.code){
+          this.state=item.state;
+          this.data.setState(item.state);
+        }
+      }
+    })
     if (this.model == 'cumulative') {
 
       if (cato == 'Confirmed') 
       {
         color = 'rgba(255, 94, 126,1)';
         this.data.getStateDaily().subscribe((data) => {
-          // console.log(data["states_daily"])
+          // console.log(data)
           let sum=0;
           data['states_daily'].forEach((item, index) => {
             if (index % 3 == 0) {
@@ -151,7 +161,7 @@ export class StateGraphComponent implements OnInit {
       options: {
         responsive: true,
         legend: {
-          position: 'bottom',
+          position: 'top',
         },
         title: {
           display: true,

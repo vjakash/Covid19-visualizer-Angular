@@ -19,6 +19,7 @@ export class CountsComponent implements OnInit,DoCheck {
   stateCode="";
   stateGraphView=false;
   changeState=false;
+  state;
   prev;
   typeCum = {
     type: 'cumulative',
@@ -88,6 +89,7 @@ export class CountsComponent implements OnInit,DoCheck {
 
   ngOnInit(): void {}
   ngDoCheck(): void {
+    this.state=this.data.getState();
     //Called every time that the input properties of a component or a directive are checked. Use it to extend change detection by performing a custom check.
     //Add 'implements DoCheck' to the class.
     // console.log("From counts",this.data.getStateCode(),this.data.getStateGraphView())
@@ -97,7 +99,7 @@ export class CountsComponent implements OnInit,DoCheck {
       this.stateCode=String(this.data.getStateCode());
       this.stateGraphView=Boolean(this.data.getStateGraphView());
       this.changeState=Boolean(this.data.getChangeState());
-      console.log(this.stateCode,this.stateGraphView,this.changeState);
+      // console.log(this.stateCode,this.stateGraphView,this.changeState);
     }
   }
 }

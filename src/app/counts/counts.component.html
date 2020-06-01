@@ -43,7 +43,10 @@
         </div>
     </div>
 </div>
-<div class="row" *ngIf="model=='cumulative' && stateGraphView!=true">
+<div class="row text-center" *ngIf="model=='cumulative' && stateGraphView!=true">
+    <div class="col-lg-12">
+        <h1 class="text-center">India</h1>
+    </div>
     <div class="col-lg-12" *ngIf="displayCumChart ">
         <!-- {{displayCumChart}}{{cumulative|json}} -->
         <app-line-chart [type]="typeCum.type" [section]="typeCum.section[0]" [cato]="typeCum.cato[0]"></app-line-chart>
@@ -71,8 +74,11 @@
 </div>
 
 
-<div class="row" *ngIf="model=='cumulative' && stateGraphView==true && changeState==true">
-    <div class="col-lg-12">
+<div class="row text-center" *ngIf="model=='cumulative' && stateGraphView==true && changeState==true">
+    <div class="col-lg-12 text-center">
+        <h1>{{state}}</h1>
+    </div>
+    <div class="col-lg-12" style="margin-top: -15px;">
         <app-state-graph [code]="stateCode" [cato]="'Confirmed'" [model]="model"></app-state-graph>
     </div>
     <div class="col-lg-12">
@@ -84,7 +90,34 @@
     <div class="col-lg-12"></div>
 </div>
 <div class="row" *ngIf="model!='cumulative' && stateGraphView==true  && changeState==true">
+    <div class="col-lg-12 " style="margin-top: -15px;">
+        <app-state-graph [code]="stateCode" [cato]="'Confirmed'" [model]="model"></app-state-graph>
+    </div>
     <div class="col-lg-12">
+        <app-state-graph [code]="stateCode" [cato]="'Recovered'" [model]="model"></app-state-graph>
+    </div>
+    <div class="col-lg-12">
+        <app-state-graph [code]="stateCode" [cato]="'Deseased'" [model]="model"></app-state-graph>
+    </div>
+    <div class="col-lg-12"></div>
+</div>
+<div class="row text-center" *ngIf="model=='cumulative' && stateGraphView==true && changeState==false">
+    <div class="col-lg-12 text-center">
+        <h1>{{state}}</h1>
+    </div>
+    <div class="col-lg-12" style="margin-top: -15px;">
+        <app-state-graph [code]="stateCode" [cato]="'Confirmed'" [model]="model"></app-state-graph>
+    </div>
+    <div class="col-lg-12">
+        <app-state-graph [code]="stateCode" [cato]="'Recovered'" [model]="model"></app-state-graph>
+    </div>
+    <div class="col-lg-12">
+        <app-state-graph [code]="stateCode" [cato]="'Deseased'" [model]="model"></app-state-graph>
+    </div>
+    <div class="col-lg-12"></div>
+</div>
+<div class="row" *ngIf="model!='cumulative' && stateGraphView==true  && changeState==false">
+    <div class="col-lg-12 " style="margin-top: -15px;">
         <app-state-graph [code]="stateCode" [cato]="'Confirmed'" [model]="model"></app-state-graph>
     </div>
     <div class="col-lg-12">

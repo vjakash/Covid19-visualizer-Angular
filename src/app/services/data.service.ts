@@ -7,6 +7,7 @@ import { Observable,of } from 'rxjs';
 export class DataService {
 cumData;
 dailyData;
+state;
 stateCode:Observable<any>=of("");
 stateGraphView:Observable<any>=of(false);
 changeState:Observable<any>=of(true);
@@ -46,6 +47,12 @@ changeState:Observable<any>=of(true);
   getChangeState(){
     return this.changeState;
   }
+  getState(){
+    return this.state;
+  }
+  setState(data){
+     this.state=data;
+  }
   setStateCode(stateCode){
     this.stateCode=stateCode;
     // console.log(this.stateCode);
@@ -55,7 +62,7 @@ changeState:Observable<any>=of(true);
     // console.log(this.stateGraphView);
   }
   setChangeState(data){
-    console.log(false);
+    // console.log(false);
     this.changeState=data;
   }
   

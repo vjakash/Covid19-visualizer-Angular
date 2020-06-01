@@ -10,6 +10,7 @@ import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 export class TableComponent implements OnInit {
   faArrowUp = faArrowUp;
   StateData;
+  count=1;
   constructor(private data: DataService) {
     this.data.getDetailedData().subscribe((data) => {
       this.StateData = data['statewise'].filter((item, index) => {
@@ -23,10 +24,17 @@ export class TableComponent implements OnInit {
   ngOnInit(): void {}
   changeGraph(stateCode) {
     // console.log(stateCode);
-    this.data.setChangeState(false);
+    // this.data.setChangeState(false);
+    if(this.count==1){
+      this.data.setChangeState(true);
+      this.count=2;
+    }
+    else{
+      this.data.setChangeState(false);
+      this.count=1;
+    }
     let code = stateCode.toLowerCase();
     this.data.setStateCode(code);
     this.data.setStateGraphView('true');
-    this.data.setChangeState(true);
   }
 }

@@ -122,7 +122,7 @@ export class LineChartComponent implements OnInit {
       options: {
         responsive: true,
         legend: {
-          position: "bottom",
+          position: "top",
         },
         title: {
           display: true,

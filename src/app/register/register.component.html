@@ -1,7 +1,27 @@
 <div class="container-fluid text-center bg-dark text-white">
     <h1>Covid-19 Tracker</h1>
 </div>
-<div class="container">
+<div class="container-fluid mt-5 text-center" *ngIf="loader">
+    <div class="row mt-5">
+    </div>
+    <div class="row mt-5">
+    </div>
+    <div class="row mt-5 text-center">
+        <div class="col-lg-12 mt-5 text-center">
+            <div class="lds-roller">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container" *ngIf="!loader">
     <div class="row ">
         <div class="col-lg-12 " style="margin-top: 5vh;">
             <!-- Toaster Container Component -->

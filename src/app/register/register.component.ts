@@ -12,6 +12,7 @@ import { ToastService } from '../services/toast.service';
 export class RegisterComponent implements OnInit {
   registerDetails;
   valid = false;
+  loader=false;
   constructor(
     private fb: FormBuilder,
     private auth: AuthService,
@@ -28,15 +29,18 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {}
   register() {
+    this.loader=true;
     if (this.registerDetails.valid) {
       // console.log(this.registerDetails.value);
       this.auth.register(this.registerDetails.value).subscribe(
         (data) => {
+          this.loader=false;
           // alert('Registration successfull');
           this.showSuccess();
           this.router.navigate(['/']);
         },
         (error) => {
+          this.loader=false;
           // console.log(error);
           this.showDanger(error.error.message)
           // alert(error.error.message);

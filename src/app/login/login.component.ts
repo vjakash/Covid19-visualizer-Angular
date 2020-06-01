@@ -11,6 +11,7 @@ import { ToastService } from '../services/toast.service';
 })
 export class LoginComponent implements OnInit {
   loginDetails;
+  loader=false;
   valid=false;
   constructor(private fb:FormBuilder,private auth:AuthService,private router:Router,private toastService:ToastService) { 
     this.loginDetails=this.fb.group({
@@ -23,6 +24,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
+    this.loader=true;
     let count=1;
     if(this.loginDetails.valid){
       // console.log(this.loginDetails.value);
@@ -30,6 +32,7 @@ export class LoginComponent implements OnInit {
         data=>{
         // alert("login successfull");
         this.auth.storeToken(data.token);
+        this.loader=false;
         // console.log(data);
           if(count==1){
             this.showSuccess();
@@ -38,6 +41,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(["/dashboard"]);
       },
         error=>{
+          this.loader=false;
           if(count==1){
             this.showDanger(error.error.message);
             count++;

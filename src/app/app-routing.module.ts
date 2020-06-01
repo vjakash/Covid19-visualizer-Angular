@@ -7,11 +7,13 @@ import { AuthGuard } from './guard/auth.guard';
 import { LineChartComponent } from './line-chart/line-chart.component';
 import { MainDashComponent } from './main-dash/main-dash.component';
 import { EachStateComponent } from './each-state/each-state.component';
+import { LoginGuardGuard } from './guard/login-guard.guard';
 
 
 const routes: Routes = [{
   path:"",
   component:LoginComponent,
+  canActivate:[LoginGuardGuard]
 },{
   path:"register",
   component:RegisterComponent

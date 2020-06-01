@@ -10,6 +10,7 @@ import { RegisterComponent } from './register/register.component';
 import {HttpClientModule} from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component'
 import { AuthGuard } from './guard/auth.guard';
+import { LoginGuardGuard } from './guard/login-guard.guard';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CountsComponent } from './counts/counts.component';
 import { NgChartjsModule } from 'ng-chartjs';
@@ -49,7 +50,7 @@ import { ToastContainerComponent } from './toast-container/toast-container.compo
     NgChartjsModule,
     NgbModule
   ],
-  providers: [AuthGuard,{provide: LocationStrategy,useClass:HashLocationStrategy}],
+  providers: [AuthGuard,LoginGuardGuard,{provide: LocationStrategy,useClass:HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

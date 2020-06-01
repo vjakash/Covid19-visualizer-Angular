@@ -12,16 +12,16 @@
         <tr *ngFor="let item of StateData;index as i">
             <th style="width: 25%;"><a [routerLink]='["/dashboard/state/",i]' (mouseover)="changeGraph(item.statecode)">{{item.state}}</a></th>
             <td class="text-center">
-                <span style="color: red;font-size: 0.7rem;" *ngIf="item.todayConfirmed!=0"> <fa-icon [icon]="faArrowUp"></fa-icon>{{item.deltaconfirmed}}</span>&nbsp;&nbsp;&nbsp;{{item.confirmed}}
+                <span style="color: red;font-size: 0.7rem;" *ngIf="item.deltaconfirmed!=0"> <fa-icon [icon]="faArrowUp"></fa-icon>{{item.deltaconfirmed}}</span>&nbsp;&nbsp;&nbsp;{{item.confirmed}}
             </td>
             <td class="text-center">
                 {{item.active}}
             </td>
             <td class="text-center">
-                <span style="color: green;font-size: 0.7rem;" *ngIf="item.todayRecovered!=0"> <fa-icon [icon]="faArrowUp"></fa-icon>{{item.deltarecovered}}</span>&nbsp;&nbsp;&nbsp; {{item.recovered}}
+                <span style="color: green;font-size: 0.7rem;" *ngIf="item.deltarecovered!=0"> <fa-icon [icon]="faArrowUp"></fa-icon>{{item.deltarecovered}}</span>&nbsp;&nbsp;&nbsp; {{item.recovered}}
             </td>
             <td class="text-center">
-                <span style="color: red;font-size: 0.7rem;" *ngIf="item.todayDeceased!=0"> <fa-icon [icon]="faArrowUp"></fa-icon>{{item.deltadeaths}}</span>&nbsp;&nbsp;&nbsp;{{item.deaths}}
+                <span style="color: red;font-size: 0.7rem;" *ngIf="item.deltadeaths!=0"> <fa-icon [icon]="faArrowUp"></fa-icon>{{item.deltadeaths}}</span>&nbsp;&nbsp;&nbsp;{{item.deaths}}
             </td>
         </tr>
     </tbody>

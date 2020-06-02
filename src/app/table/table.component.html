@@ -38,6 +38,22 @@
                         <span style="color: red;font-size: 0.7rem;" *ngIf="item.deltadeaths!=0"> <fa-icon [icon]="faArrowUp"></fa-icon>{{item.deltadeaths}}</span>&nbsp;&nbsp;&nbsp;{{item.deaths}}
                     </td>
                 </tr>
+                <tr class="bg-dark text-white">
+                    <th class="text-center font-weight-bolder">#</th>
+                    <th class="text-center font-weight-bolder">India-Today Total</th>
+                    <th class="text-center">
+                        <span class="font-weight-bolder" style="color: red;font-size: 1rem;" *ngIf="todayTotalConfirm!=0"> <fa-icon [icon]="faArrowUp"></fa-icon>{{todayTotalConfirm}}</span>
+                    </th>
+                    <th class="text-center font-weight-bolder">
+                        -
+                    </th>
+                    <th class="text-center">
+                        <span class="font-weight-bolder" style="color: green;font-size: 1rem;" *ngIf="todayTotalRecovered!=0"> <fa-icon [icon]="faArrowUp"></fa-icon>{{todayTotalRecovered}}</span>
+                    </th>
+                    <th class="text-center">
+                        <span class="font-weight-bolder" style="color: red;font-size: 1rem;" *ngIf="todayTotalDeceased!=0"> <fa-icon [icon]="faArrowUp"></fa-icon>{{todayTotalDeceased}}</span>
+                    </th>
+                </tr>
             </tbody>
         </table>
     </div>

@@ -14,6 +14,10 @@ export class TableComponent implements OnInit {
   StateData;
   count=1;
   searchTerm;
+  todayTotalConfirm=0;
+  // todayTotalActive;
+  todayTotalRecovered=0;
+  todayTotalDeceased=0;
   constructor(private data: DataService) {
     this.data.getDetailedData().subscribe((data) => {
       this.StateData = data['statewise'].filter((item, index) => {
@@ -22,6 +26,13 @@ export class TableComponent implements OnInit {
           return item;
         }
       });
+      this.StateData.forEach((item)=>{
+        // console.log(item);
+        this.todayTotalConfirm+=parseInt(item.deltaconfirmed);
+        // this.todayTotalActive+=item.deltaconfirmed;
+        this.todayTotalRecovered+=parseInt(item.deltarecovered);
+        this.todayTotalDeceased+=parseInt(item.deltadeaths);
+      })
       // console.log(this.StateData);
     });
   }

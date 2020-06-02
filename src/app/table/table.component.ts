@@ -18,6 +18,7 @@ export class TableComponent implements OnInit {
     this.data.getDetailedData().subscribe((data) => {
       this.StateData = data['statewise'].filter((item, index) => {
         if (index != 0) {
+          item["position"]=index;
           return item;
         }
       });

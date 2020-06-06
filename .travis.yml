@@ -8,3 +8,11 @@ sudo: requiredbranches:
   - npm install -g @angular/cliscript:
 - ng lint
 - ng build --prod --base-href https://vjakash.github.io/Covid19-visualizer-Angular/
+
+ deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: dist/travis-demo
+  on:
+    branch: master

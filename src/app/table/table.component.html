@@ -1,6 +1,6 @@
 <div class="row text-center mt-3" *ngIf="display">
     <div class="col-lg-12">
-        <h1 class="font-weight-bolder font"><a href="#/dashboard" (mouseover)="changeGraph1()" style="text-decoration: none; color: black;">India</a></h1>
+        <h1 class="font-weight-bolder font"><a href="#/dashboard" (mouseover)="changeGraph1()" style="text-decoration: none; color: black;font-size: 2rem;">India</a></h1>
         <p class="text-muted">Note:Click category to change details of the map</p>
     </div>
     <div class="confirmed design mr-2 text-left" (click)="updateGeoChart('confirmed','#FFDFDF', '#ff0000')">
@@ -46,19 +46,19 @@
     <div class="col-lg-12 text-center">
         <br><br>
         <p class="text-muted">Note:Hover over state to change graph details</p>
-        <table class="table">
+        <table class="table" matSort (matSortChange)="sortData($event)">
             <thead class="thead-dark">
                 <tr>
-                    <th scope="col">Position.</th>
-                    <th scope="col">State</th>
-                    <th scope="col">Confirmed</th>
-                    <th scope="col">Active</th>
-                    <th scope="col">Recovered</th>
-                    <th scope="col">Deseased</th>
+                    <th mat-sort-header="Position" scope="col">Position.</th>
+                    <th mat-sort-header="State" scope="col">State</th>
+                    <th mat-sort-header="Confirmed" scope="col">Confirmed</th>
+                    <th mat-sort-header="Active" scope="col">Active</th>
+                    <th mat-sort-header="Recovered" scope="col">Recovered</th>
+                    <th mat-sort-header="Deceased" scope="col">Deceased</th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let item of StateData|stateFilter:searchTerm:'state';index as i">
+                <tr *ngFor="let item of stateDataStorage|stateFilter:searchTerm:'state';index as i">
                     <th class="text-center">{{item.position}}</th>
                     <th style="width: 25%;"><a [routerLink]='["/dashboard/state/",item.position-1]' (mouseover)="changeGraph(item.statecode)">{{item.state}}</a></th>
                     <td class="text-center">

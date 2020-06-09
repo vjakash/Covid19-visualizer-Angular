@@ -3,6 +3,8 @@ import { DataService } from '../services/data.service';
 import { CurrencyPipe } from '@angular/common';
 import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import {Sort} from '@angular/material/sort';
+
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
@@ -12,6 +14,7 @@ export class TableComponent implements OnInit {
   faArrowUp = faArrowUp;
   faSearch=faSearch;
   StateData;
+  stateDataStorage;
   count=1;
   searchTerm;
   display = false;
@@ -50,6 +53,7 @@ export class TableComponent implements OnInit {
           return item;
         }
       });
+      this.stateDataStorage=[...this.StateData];
       this.StateData.forEach((item)=>{
         // console.log(item);
         this.todayTotalConfirm+=parseInt(item.deltaconfirmed);
@@ -87,4 +91,29 @@ export class TableComponent implements OnInit {
     this.data.updateGeoChartColor(color1,color2);
     this.data.geoChartCato.next(cato);
   }
+  sortData(sort: Sort) {
+    const data = [...this.StateData];
+    // console.log(sort.direction);
+    if (!sort.active || sort.direction === '') {
+      this.stateDataStorage = data;
+      // console.log(this.stateDataStorage,data);
+      return;
+    }
+
+    this.stateDataStorage = data.sort((a, b) => {
+      const isAsc = sort.direction === 'asc';
+      switch (sort.active) {
+        case 'Position': return compare(a.position, b.position, isAsc);
+        case 'State': return compare(a.state, b.state, isAsc);
+        case 'Confirmed': return compare(a.confirmed, b.confirmed, isAsc);
+        case 'Active': return compare(a.active, b.active, isAsc);
+        case 'Recovered': return compare(a.recovered, b.recovered, isAsc);
+        case 'Deceased': return compare(a.deceased, b.deceased, isAsc);
+        default: return 0;
+      }
+    });
+  }
+}
+function compare(a: number | string, b: number | string, isAsc: boolean) {
+  return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
 }

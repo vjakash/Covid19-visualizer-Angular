@@ -1,6 +1,6 @@
-<div class="row text-center mt-4" *ngIf="graphIndividual" style="transform: scale(0.9);">
+<div class="row text-center mt-1" *ngIf="graphIndividual" style="transform: scale(0.9);">
     <div class="col-lg-12">
-        <h1 class="font-weight-bolder font"><a href="#/dashboard" style="text-decoration: none; color: black;">{{totalData.name}}</a></h1>
+        <h1 class="font-weight-bolder font"><a href="#/dashboard" style="text-decoration: none; color: black;font-size: 2rem;">{{totalData.name}}</a></h1>
     </div>
     <div class="confirmed design mr-2 text-left">
         <h6 class="ml-1 mt-1 confirmedText">Confirmed</h6>
@@ -23,19 +23,27 @@
         <h6 class="ml-1 deceasedText"></h6>
     </div>
 </div>
-<div class="row" *ngIf="displayGeoChart">
+
+<div class="row">
     <div class="col-lg-12 text-center">
-        <p class="text-muted">Note:select the states to see details of the state</p>
-        <h3 [ngClass]="{'textColorConf':category=='Confirmed' ,'textColorAct':category=='Active','textColorRec':category=='Recovered','textColorDes':category=='Deseased'}">{{category}}-Cases</h3>
+        <p class="text-muted">Note:Click the states to see details of the state/UT</p>
+        <h3 style="font-size: 1.3rem;font-weight: bold;" [ngClass]="{'textColorConf':category=='Confirmed' ,'textColorAct':category=='Active','textColorRec':category=='Recovered','textColorDes':category=='Deceased'}">{{category}}-Cases</h3>
+        <div class="lds-ellipsis" *ngIf="!displayGeoChart">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
     </div>
-    <div class="col-lg-12 text-center">
+
+    <div class="col-lg-12 text-center" *ngIf="displayGeoChart">
         <google-chart id="geoChart" type="GeoChart" [data]="geoData" [columns]="columnNames" [options]="geoOptions" (select)="emitEvent($event)">
         </google-chart>
     </div>
 </div>
 <div class="row">
     <div class="col-lg-12">
-        <h1>Spread Trends</h1>
+        <h1 style="font-size: 2rem;font-weight: bold;">Spread Trends</h1>
         <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="model">
             <label ngbButtonLabel class="btn-secondary">
               <input ngbButton type="radio" [value]="'cumulative'"> Cumulative
@@ -46,6 +54,7 @@
         </div>
     </div>
 </div>
+<br>
 <div class="row text-center" *ngIf="model=='cumulative' && stateGraphView!=true">
     <div class="col-lg-12">
         <h1 class="text-center">India-Cumulative Data</h1>

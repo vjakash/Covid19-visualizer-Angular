@@ -93,7 +93,7 @@ export class CountsComponent implements OnInit, DoCheck {
             }
           });
           if (String(cato) == 'deaths') {
-            cato = 'deseased';
+            cato = 'Deceased';
           }
           this.category =
             String(cato)[0].toUpperCase() +

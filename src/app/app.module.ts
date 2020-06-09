@@ -24,6 +24,8 @@ import {SearchStatePipe} from './pipe/search.pipe';
 import { ToastComponent } from './toast/toast.component';
 import { ToastContainerComponent } from './toast-container/toast-container.component';
 import { GoogleChartsModule } from 'angular-google-charts';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatSortModule} from '@angular/material/sort'
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +51,9 @@ import { GoogleChartsModule } from 'angular-google-charts';
     FontAwesomeModule,
     NgChartjsModule,
     NgbModule,
-    GoogleChartsModule
+    GoogleChartsModule,
+    BrowserAnimationsModule,
+    MatSortModule
   ],
   providers: [AuthGuard,LoginGuardGuard,{provide: LocationStrategy,useClass:HashLocationStrategy}],
   bootstrap: [AppComponent]

@@ -35,11 +35,13 @@
 .confirmedText {
     color: #FF5E7F;
     font-weight: bold;
+    font-size: 1rem;
 }
 
 .confirmedTextNum {
     color: #FF073A;
     font-weight: bold;
+    font-size: 1.8rem;
 }
 
 .active {
@@ -49,11 +51,13 @@
 .activeText {
     color: #60ADFF;
     font-weight: bold;
+    font-size: 1rem;
 }
 
 .activeTextNum {
     color: #007BFF;
     font-weight: bold;
+    font-size: 1.8rem;
 }
 
 .recovered {
@@ -63,11 +67,13 @@
 .recoveredText {
     color: #73C686;
     font-weight: bold;
+    font-size: 1rem;
 }
 
 .recoveredTextNum {
     color: #28A745;
     font-weight: bold;
+    font-size: 1.8rem;
 }
 
 .deceased {
@@ -77,9 +83,11 @@
 .deceasedText {
     color: #A3B2C9;
     font-weight: bold;
+    font-size: 1rem;
 }
 
 .deceasedTextNum {
     color: #6C757D;
     font-weight: bold;
+    font-size: 1.8rem;
 }

@@ -9,14 +9,15 @@ import { Router } from '@angular/router';
 })
 export class CountsComponent implements OnInit, DoCheck {
   model = 'cumulative';
+  displayGeoChart=false;
   graphIndividual=false;
   columnNames = ['State', 'Cases'];
   geoOptions = {
     region: 'IN',
     displayMode: 'regions',
     resolution: 'provinces',
-    width: 640,
-    height: 480,
+    // width: 640,
+    // height: 480,
     datalessRegionColor: 'transparent',
     enableRegionInteractivity: true,
     colorAxis: { colors: ['#FFDFDF', '#ff0000'] },
@@ -67,6 +68,7 @@ export class CountsComponent implements OnInit, DoCheck {
             }
             this.geoData.push([state, item[String('confirmed')]]);
           }
+          this.displayGeoChart=true;
         });
         this.data.geoChartCato.subscribe((cato) => {
           this.geoData = [

@@ -23,12 +23,12 @@
         <h6 class="ml-1 deceasedText"></h6>
     </div>
 </div>
-<div class="row">
+<div class="row" *ngIf="displayGeoChart">
     <div class="col-lg-12 text-center">
         <p class="text-muted">Note:select the states to see details of the state</p>
         <h3 [ngClass]="{'textColorConf':category=='Confirmed' ,'textColorAct':category=='Active','textColorRec':category=='Recovered','textColorDes':category=='Deseased'}">{{category}}-Cases</h3>
     </div>
-    <div class="col-lg-12">
+    <div class="col-lg-12 text-center">
         <google-chart id="geoChart" type="GeoChart" [data]="geoData" [columns]="columnNames" [options]="geoOptions" (select)="emitEvent($event)">
         </google-chart>
     </div>

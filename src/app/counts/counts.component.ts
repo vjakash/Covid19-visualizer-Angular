@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class CountsComponent implements OnInit, DoCheck {
   model = 'cumulative';
+  graphIndividual=false;
   columnNames = ['State', 'Cases'];
   geoOptions = {
     region: 'IN',
@@ -179,6 +180,7 @@ export class CountsComponent implements OnInit, DoCheck {
 
   emitEvent(evnt) {
     // console.log(evnt);
+    this.graphIndividual=true;
     let data = this.tempTotalData[evnt['selection'][0]['row'] - 1];
     // console.log(data);
     this.totalData = {

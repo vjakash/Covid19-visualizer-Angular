@@ -1,4 +1,7 @@
-<div class="row text-center" *ngIf="display">
+<div class="row text-center mt-4" *ngIf="display" style="transform: scale(0.9);">
+    <div class="col-lg-12">
+        <h1 class="font-weight-bolder font"><a href="#/dashboard" style="text-decoration: none; color: black;">{{totalData.name}}</a></h1>
+    </div>
     <div class="confirmed design mr-2 text-left">
         <h6 class="ml-1 mt-1 confirmedText">Confirmed</h6>
         <h4 class="ml-1 confirmedTextNum">{{totalData.confirmed}}</h4>
@@ -19,17 +22,17 @@
         <h4 class="ml-1 deceasedTextNum">{{totalData.deaths}}</h4>
         <h6 class="ml-1 deceasedText"></h6>
     </div>
-
 </div>
-<br>
 <div class="row">
-    <div class="col-lg-12 text-right">
-        <h6 class="recoveredText">Last updated</h6>
-        <h6 class="recoveredTextNum" *ngIf="lastUpdatedHours!=0">about {{lastUpdatedHours}} hours ago</h6>
-        <h6 class="recoveredTextNum" *ngIf="lastUpdatedHours==0">about {{lastUpdatedMins}} Minutes ago</h6>
+    <div class="col-lg-12 text-center">
+        <p class="text-muted">Note:select the states to see details of the state</p>
+        <h3 [ngClass]="{'textColorConf':category=='Confirmed' ,'textColorAct':category=='Active','textColorRec':category=='Recovered','textColorDes':category=='Deseased'}">{{category}}-Cases</h3>
+    </div>
+    <div class="col-lg-12">
+        <google-chart id="geoChart" type="GeoChart" [data]="geoData" [columns]="columnNames" [options]="geoOptions" (select)="emitEvent($event)">
+        </google-chart>
     </div>
 </div>
-<br>
 <div class="row">
     <div class="col-lg-12">
         <h1>Spread Trends</h1>

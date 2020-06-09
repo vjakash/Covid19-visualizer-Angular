@@ -20,3 +20,66 @@
     /* Microsoft Edge */
     color: white;
 }
+
+.design {
+    width: 23%;
+    /* border: 1px solid black; */
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.confirmed {
+    background-color: #FFE0E6;
+}
+
+.confirmedText {
+    color: #FF5E7F;
+    font-weight: bold;
+}
+
+.confirmedTextNum {
+    color: #FF073A;
+    font-weight: bold;
+}
+
+.active {
+    background-color: #EFF7FF;
+}
+
+.activeText {
+    color: #60ADFF;
+    font-weight: bold;
+}
+
+.activeTextNum {
+    color: #007BFF;
+    font-weight: bold;
+}
+
+.recovered {
+    background-color: #E4F4E8;
+}
+
+.recoveredText {
+    color: #73C686;
+    font-weight: bold;
+}
+
+.recoveredTextNum {
+    color: #28A745;
+    font-weight: bold;
+}
+
+.deceased {
+    background-color: #F6F6F7;
+}
+
+.deceasedText {
+    color: #A3B2C9;
+    font-weight: bold;
+}
+
+.deceasedTextNum {
+    color: #6C757D;
+    font-weight: bold;
+}

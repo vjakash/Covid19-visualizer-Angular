@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http'
-import { Observable,of } from 'rxjs';
+import { Observable,of, Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
+geoChartCato=new Subject();
+geoChartColor=[];
 cumData;
 dailyData;
 state;
@@ -12,7 +14,14 @@ stateCode:Observable<any>=of("");
 stateGraphView:Observable<any>=of(false);
 changeState:Observable<any>=of(true);
   constructor(private http:HttpClient) { }
-
+getGeoChartColor(){
+  return this.geoChartColor;
+}
+updateGeoChartColor(color1,color2){
+  this.geoChartColor=[];
+  this.geoChartColor.push(color1);
+  this.geoChartColor.push(color2);
+}
   getIndiaData():Observable<any>{
     return this.http.get('https://covid19.mathdro.id/api/countries/india/confirmed');
   }

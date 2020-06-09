@@ -1,3 +1,37 @@
+<div class="row text-center mt-3" *ngIf="display">
+    <div class="col-lg-12">
+        <h1 class="font-weight-bolder font"><a href="#/dashboard" (mouseover)="changeGraph1()" style="text-decoration: none; color: black;">India</a></h1>
+        <p class="text-muted">Note:Click category to change details of the map</p>
+    </div>
+    <div class="confirmed design mr-2 text-left" (click)="updateGeoChart('confirmed','#FFDFDF', '#ff0000')">
+        <h6 class="ml-1 mt-1 confirmedText">Confirmed</h6>
+        <h4 class="ml-1 confirmedTextNum">{{totalData.confirmed}}</h4>
+        <h6 class="ml-1 confirmedText"></h6>
+    </div>
+    <div class="active design mr-2 text-left" (click)="updateGeoChart('active','#60ADFF', '#007BFF')">
+        <h6 class="ml-1 mt-1 activeText">Active</h6>
+        <h4 class="ml-1 activeTextNum">{{totalData.active}}</h4>
+        <h6 class="ml-1 activeText"></h6>
+    </div>
+    <div class="recovered design mr-2 text-left" (click)="updateGeoChart('recovered','#73C686', '#28A745')">
+        <h6 class="ml-1 mt-1 recoveredText">Recovered</h6>
+        <h4 class="ml-1 recoveredTextNum">{{totalData.recovered}}</h4>
+        <h6 class="ml-1 recoveredText"></h6>
+    </div>
+    <div class="deceased design text-left" (click)="updateGeoChart('deaths','#A3B2C9', '#6C757D')">
+        <h6 class="ml-1 mt-1 deceasedText">Deceased</h6>
+        <h4 class="ml-1 deceasedTextNum">{{totalData.deaths}}</h4>
+        <h6 class="ml-1 deceasedText"></h6>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-lg-11 text-right">
+        <h6 class="recoveredText">Last updated</h6>
+        <h6 class="recoveredTextNum" *ngIf="lastUpdatedHours!=0">about {{lastUpdatedHours}} hours ago</h6>
+        <h6 class="recoveredTextNum" *ngIf="lastUpdatedHours==0">about {{lastUpdatedMins}} Minutes ago</h6>
+    </div>
+</div>
 <div class="row mt-5" style="width: 100%;">
     <div class="col-lg-12">
         <div class="input-group flex-nowrap">
@@ -8,8 +42,10 @@
         </div>
     </div>
 </div>
-<div class="row mt-4  overflow-auto" style="width: 100%;">
-    <div class="col-lg-12">
+<div class="row overflow-auto" style="width: 100%;">
+    <div class="col-lg-12 text-center">
+        <br><br>
+        <p class="text-muted">Note:Hover over state to change graph details</p>
         <table class="table">
             <thead class="thead-dark">
                 <tr>

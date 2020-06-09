@@ -30,6 +30,21 @@ export class EachStateComponent implements OnInit {
   topFiveValue = [];
   topFiveName = [];
   model = 'cumulative';
+  columnNames = ['District', 'Cases'];
+  geoOptions = {
+    region: 'IN-TN',
+    displayMode: 'regions',
+    resolution: 'provinces',
+    width: 640,
+    height: 480,
+    datalessRegionColor: 'transparent',
+    enableRegionInteractivity: true,
+    colorAxis: { colors: ['#FFDFDF', '#ff0000'] },
+  };
+  geoData = [
+    ['Madurai', 500],
+    ['Chennai', 499],
+  ];
   constructor(
     private activatedRoute: ActivatedRoute,
     private data: DataService,

@@ -60,7 +60,7 @@
             <tbody>
                 <tr *ngFor="let item of stateDataStorage|stateFilter:searchTerm:'state';index as i">
                     <th class="text-center">{{item.position}}</th>
-                    <th style="width: 25%;"><a [routerLink]='["/dashboard/state/",item.position-1]' (mouseover)="changeGraph(item.statecode)">{{item.state}}</a></th>
+                    <th style="width: 25%;"><a [routerLink]='["/state/",item.position-1]' (mouseover)="changeGraph(item.statecode)">{{item.state}}</a></th>
                     <td class="text-center">
                         <span style="color: red;font-size: 0.7rem;" *ngIf="item.deltaconfirmed!=0"> <fa-icon [icon]="faArrowUp"></fa-icon>{{item.deltaconfirmed}}</span>&nbsp;&nbsp;&nbsp;{{item.confirmed}}
                     </td>

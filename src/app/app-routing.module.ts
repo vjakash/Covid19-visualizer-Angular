@@ -11,14 +11,14 @@ import { LoginGuardGuard } from './guard/login-guard.guard';
 
 
 const routes: Routes = [{
-  path:"",
+  path:"login",
   component:LoginComponent,
-  canActivate:[LoginGuardGuard]
+  // canActivate:[LoginGuardGuard]
 },{
   path:"register",
   component:RegisterComponent
 },{
-  path:"dashboard",
+  path:"",
   component:DashboardComponent,
   children:[{
     path:"",
@@ -27,7 +27,7 @@ const routes: Routes = [{
     path:"state/:id",
     component:EachStateComponent
   }],
-  canActivate:[AuthGuard]
+  // canActivate:[AuthGuard]
  }
 //  ,
 // {
